@@ -730,4 +730,232 @@ const arr = [4, 3, 6, 8];
 
 // console.log(total_price);
 
+
+// ES6 (2015)
+
+
+// Created Method using Class:
+// class User{
+//     constructor(username, email, password){
+//         this.username = username;
+//         this.email = email;
+//         this.password = password;
+//     }
+//     encryptPassword(){
+//         return `${this.password}abc`;
+//     }
+//     changeUsername(){
+//         return `${this.username.toUpperCase()}`
+//     }
+// }
+
+// Created Method using function:
+// function User(username, email, password){
+//     this.username = username
+//     this.email = email
+//     this.password = password
+// }
+// User.prototype.encryptPassword = function(){
+//     return `${this.password}abc`;
+// }
+// User.prototype.changeUsername = function(){
+//     return `${this.username.toUpperCase()}`;
+// }
+
+// const chai = new User("chai", "chai@gamil.com", "123");
+// console.log(chai.encryptPassword());
+// console.log(chai.changeUsername());
+
+
+// Inheritance:
+// class User{
+//     constructor(username){
+//         this.username = username
+//     }
+//     logMe(){
+//         console.log(`USERNAME is ${this.username}`)
+//     }
+// }
+
+// class Teacher extends User{ // By using extends, in Teacher class, User class's properties will get available.
+//     constructor(username, email, password){
+//         super(username); // Super passes the current execution context to other class, alike call.
+//         this.email = email;
+//         this.password = password;
+//     }
+
+//     addCourse(){
+//         console.log(`New course was added by ${this.username}`)
+//     }
+// }
+
+// const chai = new Teacher("Chai", "chai@teacher.com", "123");
+// chai.addCourse();
+// chai.logMe()
+
+// const masalaChai = new User("masalachai")
+// masalaChai.logMe();
+
+
+// class User{
+//     constructor(username){
+//         this.username = username;
+//     }
+
+//     logMe(){
+//         console.log(`Username: ${this.username}`);
+//     }
+
+//     static createId(){
+//         return `123`;
+//     }
+// }
+
+// class Teacher extends User{
+//     constructor(username, email){
+//         super(username);
+//         this.email = email;
+//     }
+// }
+
+// const hitesh = new User("Hitesh");
+// const iphone = new Teacher("iPHone", "i@phone.com");
+// console.log(hitesh.createId());
+// console.log(first)
+// iphone.logMe()
+// console.log(iphone.createId());
+
+
+// Bind: Actually Bind has different properties:
+/*
+- It binds an object into a function. Eg: fn.bind(obj)
+- Bind takes non-primitive value at first parameter, we can pass anything at 2nd parameter that will go into the function.
+ */
+
+// function greet() {
+//     console.log(this.name);
+// }
+
+// const person = {
+//     name: 'John Doe'
+// };
+
+// const boundGreet = greet.bind(person);
+// boundGreet(); // Logs 'John Doe'
+
+// Create a new function with a specific this value
+// function greet(greeting) {
+//     console.log(`${greeting}, ${this.name}`);
+// }
+
+// const boundGreet = greet.bind(person, 'Hello'); // Here Body of person that is "name" can be accessed in "greet" function by using same body name (name) with new keyword.
+// boundGreet(); // Logs 'Hello, John Doe'
+
+// Curry a function
+// function multiply(a, b) {
+//     return a * b;
+// }
+
+// const double = multiply.bind(null, 2);
+// console.log(double(5)); // Logs 10
+
+// // Partially apply a function
+// function add(a, b, c) {
+//     return a + b + c;
+// }
+
+// const addTen = add.bind(null, 10);
+// console.log(addTen(5, 5)); // Logs 20
+
+
+
+// Interview Question:
+/*
+Can we change the value of Math.PI, if not then why not?
+Ans.
+{
+  value: 3.141592653589793,
+  writable: false,
+  enumerable: false,
+  configurable: false
+}
+ */
+// const descriptor = Object.getOwnPropertyDescriptor(Math, "PI");
+// console.log(descriptor);
+
+// New question:
+// const chai = {
+//     name: "ginger chai",
+//     price: 250,
+//     isAvailable: true,
+//     orderChai: function(){
+//         console.log("Chai nahi bani");
+//     }
+// }
+// console.log(chai);
+// console.log(Object.getOwnPropertyDescriptor(chai, "name"));
+// Object.defineProperty(chai, "name", {
+//     writable: false,
+//     enumerable: false,
+// })
+//console.log(Object.getOwnPropertyDescriptor(chai, "name"));
+// for(let [key, value] of Object.entries(chai)){
+//     if(typeof value != "function"){
+//         console.log(`${key}: ${value}`);
+//     }
+// }
+
+
+
+// Getter_Setter:
+// class User{
+//     constructor(email, password){
+//         this.email = email;
+//         this.password = password;
+//     }
+//     get email(){
+//         return this._email.toUpperCase();
+//     }
+//     set email(value){
+//         this._email = value;
+//     }
+
+//     get password(){ // This is to get the value of class from out of the class.
+//         return this._password.toUpperCase();
+//     }
+//     set password(value){
+//         this._password = value;
+//     }
+// }
+// const hitesh = new User("hitesg@ai.com", "abc");
+// console.log(hitesh.email);
+
+
+
+// Functional getter / setter:
+// function User(email, password){
+//     this._email = email;
+//     this._password = password;
+
+//     Object.defineProperty(this, "email", {
+//         get: function(){
+//             return this._email.toUpperCase();
+//         },
+//         set: function(value){
+//             this.email = value;
+//         }
+//     })
+//     Object.defineProperty(this, "password", {
+//         get: function(){
+//             return this._password.toUpperCase();
+//         },
+//         set: function(value){
+//             this.password = value;
+//         }
+//     })
+// }
+
+// const chai = new User("chai@chai.com", "chai");
+// console.log(chai.email);
+
 ```
